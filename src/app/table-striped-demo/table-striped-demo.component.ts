@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EmployeeServiceService } from '../employee-service.service';
-import { Employee } from '../employee';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap } from 'rxjs';
-
-const  httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { EmployeeServiceService } from '../employee/service-employee/employee-service.service';
+import { Employee } from '../employee/model/employee';
 
 @Component({
   selector: 'app-table-striped-demo',
@@ -25,21 +19,12 @@ export class TableStripedDemoComponent implements OnInit {
   }
 
   getAllEmployee():void{
-    this.EmployeeService.getEmployees().subscribe((employee:any)=>{
+    this.EmployeeService.getEmployees().subscribe((employee:Employee[])=>{
       this.employees = employee;
     },
     error => {
       console.log(error);
     })
-  }
-
-  add(name: string, lastname: string, email: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.EmployeeService.addEmployee({ firstName: name, lastName: lastname, email: email} as Employee)
-      .subscribe(hero => {
-        this.employees.push(hero);
-      });
   }
 
   delete(employee: Employee): void {

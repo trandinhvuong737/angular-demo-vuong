@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap, retry } from 'rxjs/operators';
 
-import { Employee } from './employee';
+import { Employee } from '../model/employee';
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {
@@ -22,7 +22,9 @@ export class EmployeeServiceService {
   constructor(private http: HttpClient) { }
 
   getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.url, httpOptions);
+    return this.http.get<Employee[]>(this.url, httpOptions).pipe(
+      catchError(this.handleError<Employee[]>('getEmployee'))
+    );
   }
 
 
@@ -34,8 +36,8 @@ export class EmployeeServiceService {
   }
 
   /** POST: add a new Employee to the server */
-  addEmployee(employee: any) {
-    return this.http.post<any>(`${this.url}/add`, employee, httpOptions)
+  addEmployee(employee: Employee) {
+    return this.http.post<Employee>(`${this.url}/add`, employee, httpOptions)
   }
 
   /** DELETE: delete the Employee from the server */

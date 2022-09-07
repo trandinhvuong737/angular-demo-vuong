@@ -11,11 +11,11 @@ import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { DetailsComponent } from './details/details.component';
-import { AddEmployeeComponent } from './add-employee/add-employee.component'
+import { DetailsComponent } from './employee/details/details.component';
+import { AddEmployeeComponent } from './employee/add-employee/add-employee.component'
 import {InputNumberModule} from 'primeng/inputnumber';
 import {ChipsModule} from 'primeng/chips';
-import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
 
 
 

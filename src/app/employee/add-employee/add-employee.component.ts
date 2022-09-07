@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
-import { EmployeeServiceService } from '../employee-service.service';
-import { Employee } from '../employee';
+import { EmployeeServiceService } from '../../employee/service-employee/employee-service.service';
+import { Employee } from '../model/employee';
 
 @Component({
   selector: 'app-add-employee',
