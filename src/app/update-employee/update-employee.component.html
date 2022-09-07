@@ -1,0 +1,31 @@
+<div class="form-update">
+  <div *ngIf="employee" >
+    <div><span>id: </span>{{employee.id}}</div>
+    <div>
+      <label for="hero-name">First Name: </label>
+      <input id="hero-name" [(ngModel)]="employee.firstName" placeholder="First Name"/>
+    </div>
+    <div>
+      <label for="hero-name">Last Name: </label>
+      <input id="hero-name" [(ngModel)]="employee.lastName" placeholder="Last Name"/>
+    </div>
+    <div>
+      <label for="hero-name">Email: </label>
+      <input id="hero-name" [(ngModel)]="employee.email" placeholder="Email"/>
+    </div>
+    <div>
+      <label for="hero-name">Age: </label>
+      <input id="hero-name" [(ngModel)]="employee.age" placeholder="Age"/>
+    </div>
+    <div>
+      <label for="hero-name">Gender: </label>
+      <input id="hero-name" [(ngModel)]="employee.gender" placeholder="Gender"/>
+    </div>
+    <div>
+      <label for="hero-name">Phone Number: </label>
+      <input id="hero-name" [(ngModel)]="employee.phoneNumber" placeholder="Phone Number"/>
+    </div>
+    <button pButton type="button" label="go back" class="p-button-secondary" (click)="goBack()"></button>
+    <button pButton type="button" label="Save" class="p-button-success" (click)="save()"></button>
+  </div>
+</div>

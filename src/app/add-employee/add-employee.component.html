@@ -1,0 +1,42 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div class="p-fluid grid form-creact-employee">
+    <div class="field col-12 md:col-4 ">
+        <label for="pInputText">First Name</label>
+        <input id="pInputText" pInputText type="text" formControlName="firstName">
+    </div>
+
+    <div class="field col-12 md:col-4">
+        <label for="pInputText ">Last Name</label>
+        <input id="pInputText " pInputText type="text" formControlName="lastName">
+    </div>
+
+    <div class="field col-12 md:col-4">
+        <label for="pInputText ">Email</label>
+        <input id="pInputText " pInputText type="text" formControlName="email">
+    </div>
+
+    <div class="field col-12 md:col-4">
+        <label for="pInputText ">Age</label>
+        <input id="pInputText " pInputText type="number" formControlName="age">
+    </div>
+
+    <div class="field col-12 md:col-4">
+        <label for="pInputText ">Phone Number</label>
+        <input id="pInputText " pInputText type="number" formControlName="phoneNumber">
+    </div>
+
+    <label for="pInputText ">Gender</label>
+    <div style="margin-left: 10px">
+      <input id="Nam " type="radio" name="gender" value="Nam" formControlName="gender" >
+      <label for="Nam ">Nam</label>
+      <br>
+      <input id="Nu " type="radio" name="gender" value="Nu" formControlName="gender" >
+      <label for="Nu ">Nu</label>
+    </div>
+
+  </div>
+  <div class = "button-add">
+    <button pButton label="Add" class="p-button-success" type="submit"></button>
+  </div>
+
+</form>

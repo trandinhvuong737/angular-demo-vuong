@@ -1,0 +1,32 @@
+<div class="form-details">
+  <div *ngIf="employee">
+    <h2>{{employee.firstName| uppercase}} {{employee.lastName| uppercase}} Details</h2>
+    <div><span>id: </span>{{employee.id}}</div>
+    <div>
+      <label for="float-input">First Name:</label>
+      <span class="badge">{{employee.firstName}}</span>
+    </div>
+    <div>
+      <label for="employee">lastName Name: </label>
+      <span class="badge">{{employee.lastName}}</span>
+    </div>
+    <div>
+      <label for="employee">Email: </label>
+      <span class="badge">{{employee.email}}</span>
+    </div>
+    <div>
+      <label for="employee">Genger: </label>
+      <span class="badge">{{employee.gender}}</span>
+    </div>
+    <div>
+      <label for="employee">Age: </label>
+      <span class="badge">{{employee.age}}</span>
+    </div>
+    <div>
+      <label for="employee">Phone Number: </label>
+      <span class="badge">{{employee.phoneNumber}}</span>
+    </div>
+    <button pButton type="button" label="go back" class="p-button-secondary" (click)="goBack()"></button>
+  </div>
+
+</div>
