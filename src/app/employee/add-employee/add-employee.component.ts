@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
-import { EmployeeServiceService } from '../../employee/service-employee/employee-service.service';
+import { EmployeeServiceService } from '../service/employee.service';
 import { Employee } from '../model/employee';
 
 @Component({
