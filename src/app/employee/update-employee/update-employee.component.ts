@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { EmployeeServiceService } from '../service/employee.service';
+import { EmployeeService } from '../service/employee.service';
 import { Employee } from '../model/employee';
 
 @Component({
@@ -16,7 +16,7 @@ employee: Employee | undefined;
 
   constructor(
     private route: ActivatedRoute,
-    private employeeService: EmployeeServiceService,
+    private employeeService: EmployeeService,
     private location: Location
   ) {}
 

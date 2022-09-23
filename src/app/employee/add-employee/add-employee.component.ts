@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
-import { EmployeeServiceService } from '../service/employee.service';
-import { Employee } from '../model/employee';
+import { EmployeeService } from '../service/employee.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -11,11 +10,8 @@ import { Employee } from '../model/employee';
 })
 export class AddEmployeeComponent implements OnInit {
   constructor(
-    private employeeService: EmployeeServiceService,
+    private employeeService: EmployeeService,
     private formBuilder: FormBuilder) { }
-
-  employees: Employee[] = [];
-  employee: Employee | undefined;
 
   checkoutForm = this.formBuilder.group({
     firstName: '',

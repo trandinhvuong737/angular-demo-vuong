@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AgGridModule } from 'ag-grid-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TableStripedDemoComponent } from './table-striped-demo/table-striped-demo.component';
@@ -16,8 +15,8 @@ import { AddEmployeeComponent } from './employee/add-employee/add-employee.compo
 import {InputNumberModule} from 'primeng/inputnumber';
 import {ChipsModule} from 'primeng/chips';
 import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
-
-
+import { DataGridComponent } from './data-grid/data-grid.component';
+import 'ag-grid-enterprise';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,10 @@ import { UpdateEmployeeComponent } from './employee/update-employee/update-emplo
     DetailsComponent,
     AddEmployeeComponent,
     UpdateEmployeeComponent,
+    DataGridComponent,
   ],
   imports: [
+    AgGridModule,
     ChipsModule,
     InputNumberModule,
     BrowserModule,
@@ -39,7 +40,6 @@ import { UpdateEmployeeComponent } from './employee/update-employee/update-emplo
     HttpClientModule,
     TableModule,
     ButtonModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]

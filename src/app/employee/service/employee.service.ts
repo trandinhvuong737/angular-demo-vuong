@@ -5,6 +5,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap, retry } from 'rxjs/operators';
 
 import { Employee } from '../model/employee';
+import { SortEmployee } from '../model/sort-employee';
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {
@@ -15,13 +16,13 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class EmployeeServiceService {
+export class EmployeeService {
 
   url = `${environment.apiUrl}/employee`;
 
   constructor(private http: HttpClient) { }
 
-  getEmployees(): Observable<Employee[]> {
+  getAllEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.url, httpOptions).pipe(
       catchError(this.handleError<Employee[]>('getEmployee'))
     );
@@ -37,7 +38,7 @@ export class EmployeeServiceService {
 
   /** POST: add a new Employee to the server */
   addEmployee(employee: Employee) {
-    return this.http.post<Employee>(`${this.url}/add`, employee, httpOptions)
+    return this.http.post<Employee>(`${this.url}/add`, employee, httpOptions);
   }
 
   /** DELETE: delete the Employee from the server */
@@ -52,6 +53,11 @@ export class EmployeeServiceService {
     return this.http.put<Employee>(`${this.url}/update`, employee, httpOptions).pipe(
       catchError(this.handleError<Employee>('updateEmployee'))
     );
+  }
+
+  sortEmployees(sort : SortEmployee): Observable<Employee[]> {
+    return this.http.post<Employee[]>(`${this.url}/sort`,sort,httpOptions);
+
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

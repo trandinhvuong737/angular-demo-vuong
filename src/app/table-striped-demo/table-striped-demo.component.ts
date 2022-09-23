@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EmployeeServiceService } from '../employee/service/employee.service';
+import { EmployeeService } from '../employee/service/employee.service';
 import { Employee } from '../employee/model/employee';
 
 @Component({
@@ -12,14 +12,14 @@ export class TableStripedDemoComponent implements OnInit {
 
   employees: Employee[] = [];
 
-  constructor(private EmployeeService: EmployeeServiceService) { }
+  constructor(private EmployeeService: EmployeeService) { }
 
   ngOnInit(): void {
     this.getAllEmployee();
   }
 
   getAllEmployee():void{
-    this.EmployeeService.getEmployees().subscribe((employee:Employee[])=>{
+    this.EmployeeService.getAllEmployees().subscribe((employee:Employee[])=>{
       this.employees = employee;
     },
     error => {
