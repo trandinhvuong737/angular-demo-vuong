@@ -17,6 +17,11 @@ import {ChipsModule} from 'primeng/chips';
 import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
 import { DataGridComponent } from './data-grid/data-grid.component';
 import 'ag-grid-enterprise';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { EmployeeEffects } from './employee/state/employee.effects';
+import { employeeReducer } from './employee/state/employee.reducers';
+import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +33,7 @@ import 'ag-grid-enterprise';
     AddEmployeeComponent,
     UpdateEmployeeComponent,
     DataGridComponent,
+    EmployeeListComponent,
   ],
   imports: [
     AgGridModule,
@@ -40,6 +46,8 @@ import 'ag-grid-enterprise';
     HttpClientModule,
     TableModule,
     ButtonModule,
+    StoreModule.forRoot({employees: employeeReducer}),
+    EffectsModule.forRoot([EmployeeEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

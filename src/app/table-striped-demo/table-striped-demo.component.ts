@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-import { EmployeeService } from '../employee/service/employee.service';
 import { Employee } from '../employee/model/employee';
+import {selectEmployees} from "../employee/state/employee.selectors";
+import {Store} from "@ngrx/store";
+import { EmployeeService } from '../employee/service/employee.service';
+import {retrievedEmployeeList} from "../employee/state/employee.actions";
+
 
 @Component({
   selector: 'app-table-striped-demo',
@@ -9,27 +13,23 @@ import { Employee } from '../employee/model/employee';
   styleUrls: ['./table-striped-demo.component.css']
 })
 export class TableStripedDemoComponent implements OnInit {
+  employees$ = this.store.select(selectEmployees);
+  employees:Array<Employee>=[]
 
-  employees: Employee[] = [];
-
-  constructor(private EmployeeService: EmployeeService) { }
+  constructor(
+    private store: Store,
+    private employeeService: EmployeeService,
+  ) { }
 
   ngOnInit(): void {
-    this.getAllEmployee();
+    this.employees$.subscribe(employees => {
+      this.employees = [...employees];
+    });
+    this.employeeService
+    .getAllEmployees()
+    .subscribe((employees) => this.store.dispatch(retrievedEmployeeList({ employees })));
   }
 
-  getAllEmployee():void{
-    this.EmployeeService.getAllEmployees().subscribe((employee:Employee[])=>{
-      this.employees = employee;
-    },
-    error => {
-      console.log(error);
-    })
-  }
 
-  delete(employee: Employee): void {
-    this.employees = this.employees.filter(e => e !== employee);
-    this.EmployeeService.deleteEmployee(employee.id).subscribe();
-  }
 
 }

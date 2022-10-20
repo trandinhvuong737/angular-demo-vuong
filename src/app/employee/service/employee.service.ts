@@ -22,11 +22,18 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) { }
 
-  getAllEmployees(): Observable<Employee[]> {
+  getAllEmployees(): Observable<Array<Employee>> {
     return this.http.get<Employee[]>(this.url, httpOptions).pipe(
       catchError(this.handleError<Employee[]>('getEmployee'))
     );
   }
+
+  // getAllEmployeesNGrx(): Observable<Array<Employee>> {
+  //   return this.http
+  //     .get<{items:Employee[]}>(this.url, httpOptions)
+  //     .pipe(map((employees) => employees.items || [])
+  //   );
+  // }
 
 
   /** GET Employee by id. Will 404 if id not found */
